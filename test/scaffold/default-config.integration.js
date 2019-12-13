@@ -6,7 +6,7 @@ var sinon = require('sinon');
 var proxyquire = require('proxyquire');
 
 describe('#defaultConfig', function() {
-  var expectedExecPath = path.resolve(__dirname, '../../bin/particld');
+  var expectedExecPath = path.resolve(__dirname, '/usr/bin/capricoinplusd');
 
   it('will return expected configuration', function() {
     var config = JSON.stringify({
@@ -58,8 +58,8 @@ describe('#defaultConfig', function() {
       services: [
         'bitcoind',
         'web',
-        'particl-insight-api',
-        'particl-insight-ui'
+        'capricoinplus-insight-api',
+        'capricoinplus-insight-ui'
       ],
       servicesConfig: {
         bitcoind: {
@@ -87,7 +87,7 @@ describe('#defaultConfig', function() {
     });
     var home = process.env.HOME;
     var info = defaultConfig({
-      additionalServices: ['particl-insight-api', 'particl-insight-ui']
+      additionalServices: ['capricoinplus-insight-api', 'capricoinplus-insight-ui']
     });
     info.path.should.equal(home + '/.bitcore');
     info.config.network.should.equal('livenet');
@@ -95,8 +95,8 @@ describe('#defaultConfig', function() {
     info.config.services.should.deep.equal([
       'bitcoind',
       'web',
-      'particl-insight-api',
-      'particl-insight-ui'
+      'capricoinplus-insight-api',
+      'capricoinplus-insight-ui'
     ]);
     var bitcoind = info.config.servicesConfig.bitcoind;
     should.exist(bitcoind);
